@@ -12,16 +12,11 @@
 | first_name       | string | null: false |
 | family_name_kana | string | null: false |
 | first_name_kana  | string | null: false |
-| birth_year       | integer| null: false |
-| birth_month      | integer| null: false |
 | birth_day        | date   | null: false |
 
 ### Association
 - has_many :products
-- has_many :purchases_info
-- has_one_active_hash :prefecture
-- has_one :user_login
-- has_one :item_purchase
+- has_many :items_purchases
 
 
 ## products テーブル
@@ -39,6 +34,7 @@
 
 ### Association
 - belongs_to :user
+- has_one : items_purchase
 
 
 ## purchases_info テーブル
@@ -56,7 +52,6 @@
 - belongs_to :product
 
 
-
 ## items_purchase テーブル
 | Column        | Type    | Options                        |
 | ------------- | --------| -------------------------------|
@@ -64,7 +59,9 @@
 | product_id    | integer | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchase_info
+belongs_to : user
+belongs_to : product
+has_one :purchase_info
 
 
 ## users_login テーブル
