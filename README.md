@@ -19,61 +19,61 @@
 ### Association
 - has_many :products
 - has_many :purchases_info
-- has_one_active_hash :prefectures
-- has_one :users_login
+- has_one_active_hash :prefecture
+- has_one :user_login
 - has_one :item_purchase
 
 
 ## products テーブル
-| Column               | Type   | Options     |
-| ---------------------| ------ | ----------- |
-| product_name         | string | null: false |
-| product_explanation  | text   | null: false |
-| category_id          | integer| null: false |
-| condition            | integer| null: false |
-| shipping_burden      | integer| null: false |
-| shipping_origin      | integer| null: false |
-| days_until_shipping  | integer| null: false |
-| price                | string | null: false |
-| user_id              | integer| null: false |
+| Column               | Type   | Options                        |
+| ---------------------| ------ | -------------------------------|
+| product_name         | string | null: false                    |
+| product_explanation  | text   | null: false                    |
+| category_id          | integer| null: false                    |
+| condition            | integer| null: false                    |
+| shipping_burden      | integer| null: false                    |
+| shipping_origin      | integer| null: false                    |
+| days_until_shipping  | integer| null: false                    |
+| price                | string | null: false                    |
+| user_id              | integer| null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 
 
 ## purchases_info テーブル
-| Column        | Type       | Options      |
-| ------------- | ---------- | -------------|
-| postal_code   | string     | null: false  |
-| prefectures   | integer    | null: false  |
-| city          | string     | null: false  |
-| address       | string     | null: false  |
-| building_name | string     |              |
-| phone_number  | string     | null: false  |
-| product_id    | integer    | null: false  |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | -------------------------------|
+| postal_code   | string     | null: false                    |
+| prefectures   | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| product_id    | integer    | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :products
+- belongs_to :product
+
 
 
 ## items_purchase テーブル
-| Column        | Type    | Options      |
-| ------------- | --------| -------------|
-| user_id       | integer | null: false  |
-| product_id    | integer | null: false  |
+| Column        | Type    | Options                        |
+| ------------- | --------| -------------------------------|
+| user_id       | integer | null: false, foreign_key: true |
+| product_id    | integer | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
+- belongs_to :purchase_info
 
 
 ## users_login テーブル
-| Column        | Type    | Options      |
-| ------------- | --------| -------------|
-| user_id       | integer | null: false  |
-| email         | integer | null: false  |
+| Column        | Type    | Options                        |
+| ------------- | --------| -------------------------------|
+| user_id       | integer | null: false, foreign_key: true |
+| email         | integer | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
 
 
 
