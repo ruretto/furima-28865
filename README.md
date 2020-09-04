@@ -14,12 +14,14 @@
 | first_name_kana  | string | null: false |
 | birth_year       | integer| null: false |
 | birth_month      | integer| null: false |
-| birth_day        | integer| null: false |
+| birth_day        | date   | null: false |
 
 ### Association
 - has_many :products
 - has_many :purchases_info
+- has_one_active_hash :prefectures
 - has_one :users_login
+- has_one :item_purchase
 
 
 ## products テーブル
@@ -27,14 +29,12 @@
 | ---------------------| ------ | ----------- |
 | product_name         | string | null: false |
 | product_explanation  | text   | null: false |
-| category_id          | string | null: false |
+| category_id          | integer| null: false |
 | condition            | integer| null: false |
 | shipping_burden      | integer| null: false |
 | shipping_origin      | integer| null: false |
 | days_until_shipping  | integer| null: false |
 | price                | string | null: false |
-| sales_commission     | string | null: false |
-| sales_profit         | string | null: false |
 | user_id              | integer| null: false |
 
 ### Association
@@ -54,6 +54,16 @@
 
 ### Association
 - belongs_to :products
+
+
+## items_purchase テーブル
+| Column        | Type    | Options      |
+| ------------- | --------| -------------|
+| user_id       | integer | null: false  |
+| product_id    | integer | null: false  |
+
+### Association
+- belongs_to :user
 
 
 ## users_login テーブル
