@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
-  before_action :require_login
+  #class NotPermittedError < StandardError; end
+  before_action :correct_user
+  #authenticate_user!
+  
+  #require_login
   
   def index
     @users = User.all
   end
 
   def show
+
   end
 
   def new
@@ -17,6 +22,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if user.save!
+      
   end
 
   def update
@@ -26,6 +33,7 @@ class UsersController < ApplicationController
   end
 
   private
+ 
 
 end
 
