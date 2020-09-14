@@ -74,9 +74,9 @@ RSpec.describe User, type: :model do
       end
 
       it "birth_dayが空だと登録できないこと" do
-        @user.birth_day = "00000000"
+        @user.birth_day = "000000"
         @user.valid?
-        expect(@user.errors[:birth_day]).to include("(minimum is 8 characters)")
+        expect(@user.errors[:birth_day]).to include("(minimum is 6 characters)")
       end
   end
 end

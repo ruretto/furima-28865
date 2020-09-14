@@ -15,7 +15,7 @@ class User < ApplicationRecord
        validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "cannot be registered if it is empty"}
        validates :family_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "cannot be registered if it is empty"}
        validates :first_name_kana, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "cannot be registered if it is empty"}
-       validates :birth_day, format: { with: /\A[0-9]+\z/, message: "(minimum is 8 characters)"}
+       validates :birth_day, format: { with: /\A[0-9]+\z/, message: "(minimum is 6 characters)"}
 end
 #       validates :another_user_email, format: { with: VALID_EMAIL_REGEX, message: "Email can't be blank"} 
 #       validates :password, format: { with: /\A[a-z0-9]+\z/, message: "Password can't be blank"}
