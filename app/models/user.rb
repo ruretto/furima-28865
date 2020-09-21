@@ -3,12 +3,16 @@ class User < ApplicationRecord
               :recoverable, :rememberable, :validatables
      
        # バリデーション
-       VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])[a-z\d]{8,32}+\z/
+       VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+       validates :password, presence: true, length: { minimum: 6 },
+                 format: { with: VALID_PASSWORD_REGEX }
+       NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+       NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
        validates :nickname, presence: true
-       validates :encrypted_password, presence: true,  length: { minimum: 6 }, format: {with:VALID_PASSWORD_REGEX} 
-       validates :family_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ } 
-       validates :family_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
-       validates :first_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ } 
-       validates :first_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
+       validates :password_confirmation, presence: true,  length: { minimum: 6 },format: { with: VALID_PASSWORD_REGEX }
+       validates :family_name, presence: true, format: {with: NAME_REGEX } 
+       validates :first_name, presence: true, format: {with: NAME_REGEX } 
+       validates :family_name_kana, presence: true, format: {with: NAME_KANA_REGEX }
+       validates :first_name_kana, presence: true, format: {with: NAME_KANA_REGEX }
        validates :birth_day, presence: true
 end
