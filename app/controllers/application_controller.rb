@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def basic_authentication
     authenticate_or_request_with_http_basic do |username, password|
-      username == 'admin' && password == '22222222'
+      username == 'admin' && password == '12345a'
     end
   end
 end
